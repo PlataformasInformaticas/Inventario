@@ -1,3 +1,6 @@
+<?php session_start();
+
+?>
 <!DOCTYPE HTML>
 <!--
 	Twenty by HTML5 UP
@@ -19,10 +22,10 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1 id="logo"><a href="index.html">Asomol <span>Manejo de Inventarios</span></a></h1>
+					<h1 id="logo"><a href="index.php">Asomol <span>Manejo de Inventarios</span></a></h1>
 					<nav id="nav">
 						<ul>
-							<li class="current"><a href="index.html">Inicio</a></li>
+							<li class="current"><a href="index.php">Inicio</a></li>
 
 						</ul>
 					</nav>
@@ -37,29 +40,53 @@
 						<header>
 							<h2>Login</h2>
 						</header>
+                         <form  name="Login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 						<p>
+
 						<?php
 							if(isset($_POST['txtusr'])){
+                                include 'conect.php';
+                                $usr = $_POST['txtusr'];
+                                $pas= $_POST['txtpas'];
+                                $pas = sha1($pas);
+                                $sql="SELECT id FROM Usuario where nombre='$usr' and password='$pas';";
+                                if($resultado = $con -> query($sql)){
 
+                                    if($resultado->num_rows > 0){
+
+                                        $obj = $resultado->fetch_object();
+                                        $ID=$obj->id;
+                                        $_SESSION['loggedin'] = true;
+                                        $_SESSION['userID'] = $ID;
+                                        $_SESSION['start'] = time();
+                                        $_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+                                        header("Location: main.php");
+                                        die();
+
+                                    }
+                                }else{
+                                    echo '<h1>Instalación Completada, Borre la carpta      install</h1>';
+                                }
 							}else{
 						?>
-							<form  name="Login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
 								<label>Usuario: </label>
 								<input type="Text" name="txtusr" required/>
 
 								<label>Contraseña: </label>
 								<input type="password" name="txtpas" required/>
-							</form>
-						<?php
-							}
-						?>
+
+
 						</p>
 						<footer>
 							<ul class="buttons vertical">
 								<li><button type="submit">Enviar</button></li>
 							</ul>
 						</footer>
-
+                        </form>
+                        <?php
+							}
+						?>
 					</div>
 
 				</section>

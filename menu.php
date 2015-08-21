@@ -1,9 +1,9 @@
 <!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html">Asomol <span>Manejo de Inventarios </span></a></h1>
+					<h1 id="logo"><a href="index.php">Asomol <span>Manejo de Inventarios </span></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Inicio</a></li>
+
 							<li class="current"><a href="#">Panel Principal</a></li>
 							<li class="submenu">
 								<a href="#">Inventarios</a>
@@ -40,7 +40,7 @@
 									</li>
 								</ul>
 							</li>
-							<li><a href="index.html" class="button special">Cerrar Sesión</a></li>
+							<li><a href="logoff.php" class="button special">Cerrar Sesión</a></li>
 						</ul>
 					</nav>
 				</header>

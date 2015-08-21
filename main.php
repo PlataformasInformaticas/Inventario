@@ -1,3 +1,6 @@
+<?php session_start();
+    include "comprusr.php";
+?>
 <!DOCTYPE HTML>
 <!--
 	Twenty by HTML5 UP
