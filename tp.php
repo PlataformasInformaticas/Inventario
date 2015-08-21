@@ -18,7 +18,9 @@
 	<body class="left-sidebar">
 		<div id="page-wrapper">
             <?php
-                include ("menu.php");
+                include "menu.php";
+                include "comprusr.php";
+                include "conect.php";
             ?>
 			<!-- Main -->
 				<article id="main">
@@ -38,29 +40,96 @@
 												</header>
 												<p>Aquí puedes ver las operaciones con el inventario, puedes crear nuevos productos, eliminar viejos, modificar.</p>
 												<p>
+                                                <?php
+                                                    //editar
+                                                    if(isset($_POST['btnEditar'])){
+                                                        if(isset($_POST['txtEditar'])){
+                                                            //guardar
+                                                            $sql="UPDATE `tipoProd` SET `descripcion`='".$_POST['txtEditar']."' WHERE `id`='".$_POST['btnEditar']."';";
+                                                            $con -> query($sql);
+                                                    ?>
+                                                    <a href="tp.php" class="button special">Datos Guardados. Regresar</a>
+                                                    <?php
+                                                        }else{
+                                                            //cargar formulario para modificar
 
+                                                        $sql="SELECT descripcion FROM tipoProd where id='".$_POST['btnEditar']."'";
+                                                        $resultado = $con -> query($sql);
+                                                        $obj = $resultado->fetch_object();
+                                                ?>
+                                                    <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                        <label>Descripción: </label>
+                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
+                                                        <input type="hidden" name="btnEditar" value="<?php echo $_POST['btnEditar'];?>">
+                                                        <a href="tp.php" class="button special">Regresar</a>
+                                                        <input class="special" value="Guardar" type="submit" >
+                                                    </form>
+                                                <?php
+                                                        }
+                                                    }elseif(isset($_POST['btnDel'])){
+                                                        //eliminar
+                                                        if(isset($_POST['chbDel'])){
+                                                            //guardar
+                                                            $sql="DELETE FROM  `tipoProd` WHERE `id`='".$_POST['btnDel']."';";
+                                                            $con -> query($sql);
+                                                    ?>
+                                                            <a href="tp.php" class="button special">Datos eliminados. Regresar</a>
+                                                    <?php
+                                                        }else{
+                                                            //cargar formulario para eliminar
+                                                            $sql="SELECT descripcion FROM tipoProd where id='".$_POST['btnDel']."'";
+                                                            $resultado = $con -> query($sql);
+                                                            $obj = $resultado->fetch_object();
+                                                    ?>
+                                                        <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                            <p>
+                                                                Si elimina este tipo de producto; eliminara tambien todos los productos, ventas, compras y transacciones asociadas a este, generando problemas con sus datos.
+                                                            </p>
+
+                                                            <input type="checkbox" name="chbDel" value="true">Esta seguro que desea eliminar este tipo de producto. <strong><?php echo $obj->descripcion ; ?></strong><br>
+                                                            <input type="hidden" name="btnDel" value="<?php echo $_POST['btnDel'];?>">
+                                                            <a href="tp.php" class="button special">Regresar</a>
+                                                            <input class="special" value="Guardar" type="submit" >
+
+                                                        </form>
+                                                    <?php
+                                                        }
+                                                    }else{
+                                                ?>
 												<table border="1" style="width:auto">
 													<tr>
 														<th>id</th>
 														<th>Descripción</th>
 														<th  colspan="2">Tareas</th>
 													</tr>
-													<tr>
-    													<td>1</td>
-    													<td>Gaseosas</td>
-														<td><Button onclick="">Editar</button></td>
-														<td><Button id="opener" >Eliminar</button></td>
-  													</tr>
-													<tr>
-    													<td>2</td>
-    													<td>Jugos</td>
+                                                    <?php
+                                                        //
+                                                        $sql="SELECT id, descripcion FROM tipoProd;";
+                                                        if($resultado = $con -> query($sql)){
+                                                            while($obj = $resultado->fetch_object()){
+                                                        ?>
+                                                    <tr>
+    													<td><?php echo $obj->id ; ?></td>
+    													<td><?php echo $obj->descripcion ; ?></td>
 														<td>
-															<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-															<Button name="btnEditar" type="submit" value="2" >Editar</button></td>
-															</form>
-														<td><Button id="opener" onclick="">Eliminar</button></td>
+															<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                                <Button name="btnEditar" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+                                                            </form>
+                                                        </td>
+
+														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+                                                                <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+                                                            </form>
+                                                        </td>
   													</tr>
+                                                                <?php
+                                                            }
+                                                        }
+                                                    ?>
+
+
 												</table>
+                                                <?php }?>
 												</p>
 
 											</section>

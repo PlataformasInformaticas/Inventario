@@ -8,7 +8,7 @@
 							<li class="submenu">
 								<a href="#">Inventarios</a>
 								<ul>
-									<li><a href="#">Tipos de Productos</a></li>
+									<li><a href="tp.php">Tipos de Productos</a></li>
 									<li><a href="#">Presentaciones</a></li>
 
 									<li><a href="#">Productos</a></li>

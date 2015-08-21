@@ -52,7 +52,7 @@
 													<p>Aquí puedes realizar operaciones para agregar, modificar y eliminar algún tipo de producto, tales como gaseosas, jugos, etc. </p>
 													<footer>
 														<ul class="buttons">
-															<li><a href="#" class="button small">Ir a Opción</a></li>
+															<li><a href="tp.php" class="button small">Ir a Opción</a></li>
 														</ul>
 													</footer>
 												</section>
