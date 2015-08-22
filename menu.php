@@ -4,12 +4,41 @@
 					<nav id="nav">
 						<ul>
 
-							<li class="current"><a href="#">Panel Principal</a></li>
+							<li class="current"><a href="main.php">Panel Principal</a></li>
+                            <li class="submenu">
+								<a href="#">Ventas</a>
+								<ul>
+									<li><a href="#">Nueva Venta</a></li>
+									<li class="submenu">
+										<a href="#">Reportes</a>
+										<ul>
+											<li><a href="#">Ventas Mensuales</a></li>
+											<li><a href="#">Ventas Anuales</a></li>
+											<li><a href="#">Ventas del Día</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+                            <li class="submenu">
+								<a href="#">Compras</a>
+								<ul>
+									<li><a href="#">Nueva Compra</a></li>
+                                    <li><a href="#">Proveedores</a></li>
+									<li class="submenu">
+										<a href="#">Reportes</a>
+										<ul>
+											<li><a href="#">Compras Mensuales</a></li>
+											<li><a href="#">Compras Anuales</a></li>
+											<li><a href="#">Compras del Día</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
 							<li class="submenu">
 								<a href="#">Inventarios</a>
 								<ul>
 									<li><a href="tp.php">Tipos de Productos</a></li>
-									<li><a href="#">Presentaciones</a></li>
+									<li><a href="pp.php">Presentaciones</a></li>
 
 									<li><a href="#">Productos</a></li>
 									<li><a href="#">Combos</a></li>
@@ -26,20 +55,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="submenu">
-								<a href="#">Ventas</a>
-								<ul>
-									<li><a href="#">Nueva Venta</a></li>
-									<li class="submenu">
-										<a href="#">Reportes</a>
-										<ul>
-											<li><a href="#">Ventas Mensuales</a></li>
-											<li><a href="#">Ventas Anuales</a></li>
-											<li><a href="#">Ventas del Día</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+
 							<li><a href="logoff.php" class="button special">Cerrar Sesión</a></li>
 						</ul>
 					</nav>

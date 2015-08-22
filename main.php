@@ -122,7 +122,24 @@
 													</ul>
 												</footer>
 											</section>
+                                            <section>
+												<header>
+													<h3><strong>Compras</strong></h3>
+												</header>
+												<p>Aquí puedes ver las operaciones con el área de Compras</p>
 
+											</section>
+											<section>
+												<header>
+													<h4>Nueva Compra</h4>
+												</header>
+												<p><strong>Aquí puedes realizar compras de producto a los proveedores</strong></p>
+												<footer>
+													<ul class="buttons">
+														<li><a href="#" class="button small">Ir a Opción</a></li>
+													</ul>
+												</footer>
+											</section>
 										</div>
 
 								</div>

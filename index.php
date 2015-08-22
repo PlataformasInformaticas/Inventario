@@ -59,13 +59,13 @@
                                         $_SESSION['loggedin'] = true;
                                         $_SESSION['userID'] = $ID;
                                         $_SESSION['start'] = time();
-                                        $_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+                                        $_SESSION['expire'] = $_SESSION['start'] + (30 * 60) ;
                                         header("Location: main.php");
                                         die();
 
                                     }
                                 }else{
-                                    echo '<h1>Instalación Completada, Borre la carpta      install</h1>';
+                                    echo 'No se pudo Iniciar Sesión.';
                                 }
 							}else{
 						?>
