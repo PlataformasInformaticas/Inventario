@@ -28,12 +28,61 @@
 
 					<!-- One -->
 						<section class="wrapper style4 container">
+                            <div class="paginador">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="main.php">Main </a>
+                                        </li>
+                                        <li>
+                                            >>
+                                        </li>
+                                        <li>
+                                            <a href="tp.php"> Tipo de Producto </a>
+                                        </li>
+                                        <?php
+                                            if(isset($_POST['btnEditar'])){
+                                        ?>
+                                                    <li>
+                                                     >>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Editar</strong>
+                                                    </li>
+                                        <?php
 
+                                            }elseif(isset($_POST['btnDel'])){
+
+
+                                        ?>          <li>
+                                                     >>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Eliminar</strong>
+                                                    </li>
+                                        <?php
+
+                                            }elseif(isset($_POST['btnAdd'])){
+                                         ?>
+                                                    <li>
+                                                     >>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Añadir</strong>
+                                                    </li>
+                                        <?php
+                                            }
+                                        ?>
+
+                                    </ul>
+                                </nav>
+                            </div>
 							<div class="row 150%">
 								<div class="12u 12u(narrower)">
 
 									<!-- Sidebar -->
 										<div class="sidebar">
+
 											<section class="formulario">
 												<header>
 													<h3><strong>Tipos de Productos</strong></h3>
@@ -94,8 +143,31 @@
                                                         </form>
                                                     <?php
                                                         }
+                                                    }elseif(isset($_POST['btnAdd'])){
+                                                        if(isset($_POST['txtTp'])){
+                                                            //guardar
+                                                            $sql="INSERT INTO `tipoProd` (`descripcion`) VALUES ('".$_POST['txtTp']."');";
+                                                            $con -> query($sql);
+                                                    ?>
+                                                            <a href="tp.php" class="button special">Datos Guardados. Regresar</a>
+                                                    <?php
+                                                        }else{
+                                                            //cargar formulario para añadir
+                                                    ?>
+                                                    <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                        <label>Descripción: </label>
+                                                        <input name="txtTp" type="text" required  />
+                                                        <input type="hidden" name="btnAdd" value="Añadir">
+                                                        <a href="tp.php" class="button special">Regresar</a>
+                                                        <input class="special" value="Guardar" type="submit" >
+                                                    </form>
+                                                <?php
+                                                        }
                                                     }else{
                                                 ?>
+                                                <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                    <input name="btnAdd" class="special" value="Añadir Nuevo" type="submit" >
+                                                </form> <br>
 												<table border="1" style="width:auto">
 													<tr>
 														<th>id</th>

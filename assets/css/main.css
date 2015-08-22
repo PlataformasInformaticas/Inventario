@@ -56,6 +56,24 @@
 		background-color:rgba(160, 160, 160, 0.24);
 		padding: 5px;
 	}
+.paginador {
+    margin: 0px 0px 0px 0px;
+    height: 35px;
+}
+.paginador ul {
+    list-style-type: none;
+}
+.paginador li {
+    display: inline;
+    font-size: small;
+    color: #3059A2;
+}
+.paginador li a {
+    color: #3059A2;
+}
+.paginador li a:link {
+    text-decoration:none;
+}
 /* Box Model */
 
 	*, *:before, *:after {
@@ -2073,7 +2091,7 @@
 		input[type="submit"].special,
 		input[type="reset"].special,
 		.button.special {
-			background: #83d3c9;
+			background: rgb(70, 118, 191);;
 			border-color: #83d3c9;
 			color: #fff !important;
 		}
@@ -2082,7 +2100,7 @@
 			input[type="submit"].special:hover,
 			input[type="reset"].special:hover,
 			.button.special:hover {
-				background: #96dad1 !important;
+				background: rgb(37, 115, 232) !important;
 				border-color: #96dad1 !important;
 			}
 
