@@ -40,7 +40,7 @@
 									<li><a href="tp.php">Tipos de Productos</a></li>
 									<li><a href="pp.php">Presentaciones</a></li>
 
-									<li><a href="#">Productos</a></li>
+									<li><a href="prod.php">Productos</a></li>
 									<li><a href="#">Combos</a></li>
 									<li class="submenu">
 										<a href="#">Reportes</a>

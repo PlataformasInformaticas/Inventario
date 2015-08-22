@@ -63,7 +63,7 @@
 													<p>Aquí puedes realizar operaciones para agregar, modificar y eliminar presentaciones de un producto, como por ejemplo: Pepsi lata. Pepsi Botella, Pepsi Desechable, etc.. </p>
 													<footer>
 														<ul class="buttons">
-															<li><a href="#" class="button small">Ir a Opción</a></li>
+															<li><a href="pp.php" class="button small">Ir a Opción</a></li>
 														</ul>
 													</footer>
 												</section>
@@ -78,7 +78,7 @@
 													<p>Aquí puedes realizar operaciones para agregar, modificar y eliminar Productos, como por ejemplo: Pepsi, Grapete, etc.</p>
 													<footer>
 														<ul class="buttons">
-															<li><a href="#" class="button small">Ir a Opción</a></li>
+															<li><a href="prod.php" class="button small">Ir a Opción</a></li>
 														</ul>
 													</footer>
 												</section>
