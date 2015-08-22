@@ -38,7 +38,7 @@
                                             >>
                                         </li>
                                         <li>
-                                            <a href="tp.php"> Tipo de Producto </a>
+                                            <a href="prov.php"> Proveedores </a>
                                         </li>
                                         <?php
                                             if(isset($_POST['btnEditar'])){
@@ -85,32 +85,36 @@
 
 											<section class="formulario">
 												<header>
-													<h3><strong>Tipos de Productos</strong></h3>
+													<h3><strong>Proveedores</strong></h3>
 												</header>
-												<p>Aquí puedes ver las operaciones con el inventario, puedes crear nuevos productos, eliminar viejos, modificar.</p>
+												<p>Aquí puedes ver las operaciones con proveedores de productos, puedes crear nuevos proveedores, eliminar viejos y modificar.</p>
 												<p>
                                                 <?php
                                                     //editar
                                                     if(isset($_POST['btnEditar'])){
-                                                        if(isset($_POST['txtEditar'])){
+                                                        if(isset($_POST['txtNit'])){
                                                             //guardar
-                                                            $sql="UPDATE `tipoProd` SET `descripcion`='".$_POST['txtEditar']."' WHERE `id`='".$_POST['btnEditar']."';";
+                                                            $sql="UPDATE `Proveedores` SET `nit`='".$_POST['txtNit']."', `nombre`='".$_POST['txtNombre']."', `direccion`='".$_POST['txtDireccion']."' WHERE `id`='".$_POST['btnEditar']."';";
                                                             $con -> query($sql);
                                                     ?>
-                                                    <a href="tp.php" class="button special">Datos Guardados. Regresar</a>
+                                                    <a href="prov.php" class="button special">Datos Guardados. Regresar</a>
                                                     <?php
                                                         }else{
                                                             //cargar formulario para modificar
 
-                                                        $sql="SELECT descripcion FROM tipoProd where id='".$_POST['btnEditar']."'";
+                                                        $sql="SELECT nit, nombre, direccion FROM Proveedores where id='".$_POST['btnEditar']."'";
                                                         $resultado = $con -> query($sql);
                                                         $obj = $resultado->fetch_object();
                                                 ?>
                                                     <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                        <label>Descripción: </label>
-                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
+                                                        <label>Nit: </label>
+                                                        <input name="txtNit" type="text" value="<?php echo $obj->nit ; ?>"/>
+                                                        <label>Nombre: </label>
+                                                        <input name="txtNombre" type="text" value="<?php echo $obj->nombre ; ?>"/>
+                                                        <label>Dirección: </label>
+                                                        <input name="txtDireccion" type="text" value="<?php echo $obj->direccion ; ?>"/>
                                                         <input type="hidden" name="btnEditar" value="<?php echo $_POST['btnEditar'];?>">
-                                                        <a href="tp.php" class="button special">Regresar</a>
+                                                        <a href="prov.php" class="button special">Regresar</a>
                                                         <input class="special" value="Guardar" type="submit" >
                                                     </form>
                                                 <?php
@@ -119,46 +123,53 @@
                                                         //eliminar
                                                         if(isset($_POST['chbDel'])){
                                                             //guardar
-                                                            $sql="DELETE FROM  `tipoProd` WHERE `id`='".$_POST['btnDel']."';";
+                                                            $sql="DELETE FROM  `Proveedores` WHERE `id`='".$_POST['btnDel']."';";
                                                             $con -> query($sql);
                                                     ?>
-                                                            <a href="tp.php" class="button special">Datos eliminados. Regresar</a>
+                                                            <a href="prov.php" class="button special">Datos eliminados. Regresar</a>
                                                     <?php
                                                         }else{
                                                             //cargar formulario para eliminar
-                                                            $sql="SELECT descripcion FROM tipoProd where id='".$_POST['btnDel']."'";
+                                                            $sql="SELECT nombre FROM Proveedores where id='".$_POST['btnDel']."'";
                                                             $resultado = $con -> query($sql);
                                                             $obj = $resultado->fetch_object();
                                                     ?>
                                                         <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                             <p>
-                                                                Si elimina este tipo de producto; eliminara tambien todos los productos, ventas, compras y transacciones asociadas a este, generando problemas con sus datos.
+                                                                Si elimina este Proveedor; eliminara tambien todos los productos, ventas, compras y transacciones asociadas a este, generando problemas con sus datos.
                                                             </p>
 
-                                                            <input type="checkbox" name="chbDel" value="true">Esta seguro que desea eliminar este tipo de producto. <strong><?php echo $obj->descripcion ; ?></strong><br>
+                                                            <input type="checkbox" name="chbDel" value="true">Esta seguro que desea eliminar este tipo de producto. <strong><?php echo $obj->nombre ; ?></strong><br>
                                                             <input type="hidden" name="btnDel" value="<?php echo $_POST['btnDel'];?>">
-                                                            <a href="tp.php" class="button special">Regresar</a>
+                                                            <a href="prov.php" class="button special">Regresar</a>
                                                             <input class="special" value="Guardar" type="submit" >
 
                                                         </form>
                                                     <?php
                                                         }
+                                                        //añadir
+                                                        //SELECT id, nit, nombre, direccion FROM Proveedores;
                                                     }elseif(isset($_POST['btnAdd'])){
-                                                        if(isset($_POST['txtTp'])){
+                                                        if(isset($_POST['txtNit'])){
                                                             //guardar
-                                                            $sql="INSERT INTO `tipoProd` (`descripcion`) VALUES ('".$_POST['txtTp']."');";
+                                                            $sql="INSERT INTO `Proveedores` (`nit`, `nombre`, `direccion`) VALUES ('".$_POST['txtNit']."', '".$_POST['txtNombre']."', '".$_POST['txtDireccion']."');";
                                                             $con -> query($sql);
                                                     ?>
-                                                            <a href="tp.php" class="button special">Datos Guardados. Regresar</a>
+                                                            <a href="prov.php" class="button special">Datos Guardados. Regresar</a>
                                                     <?php
                                                         }else{
                                                             //cargar formulario para añadir
                                                     ?>
-                                                    <form name="frmadd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                        <label>Descripción: </label>
-                                                        <input name="txtTp" type="text" required  />
+                                                    <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                        <label>Nit: </label>
+                                                        <input name="txtNit" type="text" required />
+                                                        <label>Nombre: </label>
+                                                        <input name="txtNombre" type="text" required />
+                                                        <label>Dirección: </label>
+                                                        <input name="txtDireccion" type="text" required />
+
                                                         <input type="hidden" name="btnAdd" value="Añadir">
-                                                        <a href="tp.php" class="button special">Regresar</a>
+                                                        <a href="prov.php" class="button special">Regresar</a>
                                                         <input class="special" value="Guardar" type="submit" >
                                                     </form>
                                                 <?php
@@ -170,19 +181,23 @@
                                                 </form> <br>
 												<table border="1" style="width:auto">
 													<tr>
-														<th>id</th>
-														<th>Descripción</th>
+														<th>Id</th>
+														<th>Nit</th>
+                                                        <th>Nombre</th>
+                                                        <th>Direccion</th>
 														<th  colspan="2">Tareas</th>
 													</tr>
                                                     <?php
                                                         //
-                                                        $sql="SELECT id, descripcion FROM tipoProd;";
+                                                        $sql="SELECT id, nit, nombre, direccion FROM Proveedores;";
                                                         if($resultado = $con -> query($sql)){
                                                             while($obj = $resultado->fetch_object()){
                                                         ?>
                                                     <tr>
     													<td><?php echo $obj->id ; ?></td>
-    													<td><?php echo $obj->descripcion ; ?></td>
+    													<td><?php echo $obj->nit ; ?></td>
+                                                        <td><?php echo $obj->nombre ; ?></td>
+                                                        <td><?php echo $obj->direccion ; ?></td>
 														<td>
 															<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                                 <Button name="btnEditar" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>

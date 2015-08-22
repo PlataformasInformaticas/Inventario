@@ -157,7 +157,7 @@
                                                         }else{
                                                             //cargar formulario para añadir
                                                     ?>
-                                                    <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                    <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                         <label>Descripción: </label>
                                                         <input name="txtTp" type="text" required  />
                                                         <input type="hidden" name="btnAdd" value="Añadir">
