@@ -74,6 +74,7 @@
 .paginador li a:link {
     text-decoration:none;
 }
+
 /* Box Model */
 
 	*, *:before, *:after {
@@ -1591,7 +1592,7 @@
 			transition: none !important;
 		}
 
-	body, input, select, textarea {
+	body, input,  textarea {
 		color: #212121;
 		font-family: 'Lato', sans-serif;
 		font-size: 15pt;
@@ -3220,3 +3221,59 @@
 			}
 
 	}
+.custom-select {
+  display: inline-block;
+  position: relative;
+  top: 25%;
+  -webkit-transform: translateY(-25%);
+  -ms-transform: translateY(-25%);
+  transform: translateY(-25%);
+  /* Styling the select background */
+  background-color: rgb(70, 118, 191);
+    margin-top: 10px;
+
+}
+.custom-select select {
+  width: auto;
+  margin: 5px;
+  padding: .1em 1.5em;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  /* Styling the select text color */
+  color: rgba(255, 255, 255,1);
+    background-color: rgb(70, 118, 191);
+  /* removes the fucking native down arrow */
+  -webkit-appearance: none;
+  -moz-appearance: window;
+}
+.custom-select select::-ms-expand {
+  display: none;
+}
+.custom-select:after {
+  position: absolute;
+  top: 1.25em;
+  right: 1em;
+  /* Styling the down arrow */
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: .25em solid transparent;
+  border-right: .25em solid transparent;
+  border-top: .375em solid #1FBDED;
+  pointer-events: none;
+}
+
+@-moz-document url-prefix() {
+  .custom-select select {
+    padding-right: 1.75em;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .custom-select select {
+    padding-right: 2em;
+  }
+}

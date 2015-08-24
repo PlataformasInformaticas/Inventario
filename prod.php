@@ -104,29 +104,15 @@
                                                         }else{
                                                             //cargar formulario para modificar
 
-                                                        $sql="SELECT pp.id as id, pp.descripcion as descripcion, (select 'selected' from presentacionProducto as p2 inner join Producto as p on p.presentacionProducto_id = p2.id where pp.id = p.presentacionProducto_id and p2.id = pp.id and p.id=".$_POST['btnEditar'].") as selected FROM presentacionProducto as pp;";
+
+                                                            $sql="SELECT tp.id as id, tp.descripcion as descripcion, (select 'selected' from tipoProd as p2 inner join Producto as p on p.tipoProd_id = p2.id where tp.id = p.tipoProd_id and p2.id = tp.id and p.id=".$_POST['btnEditar'].") as selected FROM tipoProd as tp;";
 
 
 
                                                 ?>
                                                     <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                        <label>Presentación del Producto: </label>
-
-                                                        <select name="slcPP">
-                                                            <?php
-                                                                if($resultado = $con -> query($sql)){
-                                                                    while($obj = $resultado->fetch_object()){
-                                                                    ?>
-                                                                    <option <?php echo $obj->selected ; ?> value="<?php echo $obj->id ; ?>"><?php echo $obj->descripcion ; ?></option>
-                                                                    <?php
-
-                                                                    }
-                                                                }
-                                                            $sql="SELECT tp.id as id, tp.descripcion as descripcion, (select 'selected' from tipoProd as p2 inner join Producto as p on p.tipoProd_id = p2.id where tp.id = p.tipoProd_id and p2.id = tp.id and p.id=".$_POST['btnEditar'].") as selected FROM tipoProd as tp;";
-                                                            ?>
-                                                        </select>
-                                                        <label>Tipo de Producto: </label>
-
+                                                        <label>Tipo de Producto: </label><br>
+                                                        <label class="custom-select">
                                                         <select name="slcTP">
                                                             <?php
                                                                 if($resultado = $con -> query($sql)){
@@ -137,20 +123,33 @@
 
                                                                     }
                                                                 }
+                                                            $sql="SELECT pp.id as id, pp.descripcion as descripcion, (select 'selected' from presentacionProducto as p2 inner join Producto as p on p.presentacionProducto_id = p2.id where pp.id = p.presentacionProducto_id and p2.id = pp.id and p.id=".$_POST['btnEditar'].") as selected FROM presentacionProducto as pp;";
 
                                                             ?>
                                                         </select>
+                                                        </label><br>
+                                                        <label>Presentación del Producto: </label><br>
+                                                        <label class="custom-select">
+                                                        <select name="slcPP">
+                                                            <?php
+                                                                if($resultado = $con -> query($sql)){
+                                                                    while($obj = $resultado->fetch_object()){
+                                                                    ?>
+                                                                    <option <?php echo $obj->selected ; ?> value="<?php echo $obj->id ; ?>"><?php echo $obj->descripcion ; ?></option>
+                                                                    <?php
+
+                                                                    }
+                                                                }
+
+                                                            ?>
+                                                        </select>
+                                                        </label><br>
+
                                                         <label>Descripción: </label>
                                                         <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
-                                                        <label>Tipo de Producto: </label>
 
 
 
-
-
-                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
-                                                        <label>Presentacion de Producto: </label>
-                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
                                                         <input type="hidden" name="btnEditar" value="<?php echo $_POST['btnEditar'];?>">
                                                         <a href="pp.php" class="button special">Regresar</a>
                                                         <input class="special" value="Guardar" type="submit" >
