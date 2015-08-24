@@ -104,21 +104,48 @@
                                                         }else{
                                                             //cargar formulario para modificar
 
-                                                        $sql="SELECT descripcion FROM presentacionProducto where id='".$_POST['btnEditar']."'";
-                                                        $resultado = $con -> query($sql);
-                                                        $obj = $resultado->fetch_object();
+                                                        $sql="SELECT pp.id as id, pp.descripcion as descripcion, (select 'selected' from presentacionProducto as p2 inner join Producto as p on p.presentacionProducto_id = p2.id where pp.id = p.presentacionProducto_id and p2.id = pp.id and p.id=".$_POST['btnEditar'].") as selected FROM presentacionProducto as pp;";
+
+
+
                                                 ?>
                                                     <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                        <label>Presentación del Producto: </label>
+
+                                                        <select name="slcPP">
+                                                            <?php
+                                                                if($resultado = $con -> query($sql)){
+                                                                    while($obj = $resultado->fetch_object()){
+                                                                    ?>
+                                                                    <option <?php echo $obj->selected ; ?> value="<?php echo $obj->id ; ?>"><?php echo $obj->descripcion ; ?></option>
+                                                                    <?php
+
+                                                                    }
+                                                                }
+                                                            $sql="SELECT tp.id as id, tp.descripcion as descripcion, (select 'selected' from tipoProd as p2 inner join Producto as p on p.tipoProd_id = p2.id where tp.id = p.tipoProd_id and p2.id = tp.id and p.id=".$_POST['btnEditar'].") as selected FROM tipoProd as tp;";
+                                                            ?>
+                                                        </select>
+                                                        <label>Tipo de Producto: </label>
+
+                                                        <select name="slcTP">
+                                                            <?php
+                                                                if($resultado = $con -> query($sql)){
+                                                                    while($obj = $resultado->fetch_object()){
+                                                                    ?>
+                                                                    <option <?php echo $obj->selected ; ?> value="<?php echo $obj->id ; ?>"><?php echo $obj->descripcion ; ?></option>
+                                                                    <?php
+
+                                                                    }
+                                                                }
+
+                                                            ?>
+                                                        </select>
                                                         <label>Descripción: </label>
                                                         <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
                                                         <label>Tipo de Producto: </label>
 
 
-                                                        <select name="tipoProd">
-                        <?php foreach ($rows as $row) {
-                            echo '<option value="'.$row['id'].'">'.$row['descripcion'].'</option>';
-                        }?>
-                    </select>
+
 
 
                                                         <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
