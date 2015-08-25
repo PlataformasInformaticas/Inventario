@@ -136,7 +136,7 @@
 												<p><strong>Aquí puedes realizar compras de producto a los proveedores</strong></p>
 												<footer>
 													<ul class="buttons">
-														<li><a href="#" class="button small">Ir a Opción</a></li>
+														<li><a href="compra.php" class="button small">Ir a Opción</a></li>
 													</ul>
 												</footer>
 											</section>

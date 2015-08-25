@@ -22,7 +22,7 @@
                             <li class="submenu">
 								<a href="#">Compras</a>
 								<ul>
-									<li><a href="#">Nueva Compra</a></li>
+									<li><a href="compra.php">Nueva Compra</a></li>
                                     <li><a href="prov.php">Proveedores</a></li>
 									<li class="submenu">
 										<a href="#">Reportes</a>
