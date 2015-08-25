@@ -1,6 +1,6 @@
 <?php
-$_DBHOST="localhost";
-$_DBUSER="root";
-$_DBPASS="etc";
-$_DBNAME="DBInventario";
+$_DBHOST="";
+$_DBUSER="";
+$_DBPASS="";
+$_DBNAME="";
 ?>
