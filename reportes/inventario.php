@@ -20,7 +20,7 @@ $pdf->cell(30,8,'Cantidad',1);
 $pdf->cell(50,8,'Tipo Producto',1);
 $pdf->cell(50,8,'Presentacion',1);
 $pdf->ln(8);
-$pdf->setFont('Arial,'',8);
+$pdf->setFont('Arial','',8);
 
 
 $pdf->output();
