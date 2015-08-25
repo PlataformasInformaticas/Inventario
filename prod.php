@@ -233,8 +233,6 @@
                                                         <label>Descripción: </label>
                                                         <input name="txtP" type="text" value="" required/>
 													<!-- mod -->
-                                                    
-                                                        <label>Descripción: </label>
                                                         <input type="hidden" name="btnAdd" value="Añadir">
                                                         <a href="prod.php" class="button special">Regresar</a>
                                                         <input class="special" value="Guardar" type="submit" >
