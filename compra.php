@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-
+        <script src="assets/js/cargarCompra.js"></script>
 	</head>
 	<body class="left-sidebar">
 		<div id="page-wrapper">
@@ -160,13 +160,72 @@
                                                         }
                                                         //añadir
                                                     }elseif(isset($_POST['btnAdd'])){
-                                                        if(isset($_POST['txtTp'])){
+                                                        if(isset($_POST['lsProv'])){
                                                             //guardar
-                                                            $sql="INSERT INTO `presentacionProducto` (`descripcion`) VALUES ('".$_POST['txtTp']."');";
-                                                            $con -> query($sql);
+															if(!(isset($_POST['showFRMdet']))){
+																$sql = "select id from Proveedores where nit ='" . $_POST['lsProv']."';";
+																$resultado = $con -> query($sql);
+                                                        		$obj = $resultado->fetch_object();
+																$sql="INSERT INTO `Compra` (`fecha`, `total`, `Proveedores_id`, `facN` )
+																	VALUES ('".$_POST['fecha']."', ".$_POST['saldo'].", ".$obj->id .", '".$_POST['txtNfac']."' );";
+                                                            	$con -> query($sql);
+                                                                $sql= 'SELECT LAST_INSERT_ID() as id;' ;
+                                                                $resultado = $con -> query($sql);
+                                                        		$obj = $resultado->fetch_object();
+                                                                $idCompra = $obj->id;
+															}else{
+                                                                if(!(isset($idCompra))){
+                                                                    $idCompra = $_POST['txtId'];
+                                                                }
+                                                            }
+                                                            //editar Detalle Compra
+                                                            if(isset($_POST['editarDescCompra'])){
+                                                            }elseif(isset($_POST['EliminarDescCompra'])){ //Eliminar
+                                                            }else{
+                                                ?>
+                                                <form name="frmaddDescCompra" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+                                                    <input type="hidden" name="btnAdd" value="Añadir">
+                                                    <input type="hidden" name="lsProv" value="Producto">
+                                                    <input type="hidden" name="txtId" value="<?php  echo $idCompra?>">
+                                                    <label>Tipo de Producto</label>
+                                                    <label class="custom-select">
+                                                        <select name="slcTPDC" id="slcTPDC" onchange="CargarPresentacion(this.value);" required>
+                                                            <option disabled selected value="0">Seleccione un Valor</option>
+                                                            <?php
+                                                                $sql = "SELECT tipoProd.id as id, tipoProd.descripcion as descripcion FROM Producto inner join tipoProd on tipoProd.id = Producto.tipoProd_id group by id order by descripcion asc;";
+                                                                if($resultado = $con -> query($sql)){
+                                                                    while($obj = $resultado->fetch_object()){
+
+                                                            ?>
+                                                            <option  value="<?php echo $obj->id ; ?>"><?php echo $obj->descripcion ; ?></option>
+                                                            <?php
+                                                                    }
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </label>
+                                                    <br>
+                                                    <label>Presentación del Producto</label>
+                                                    <span id="PP">
+                                                    </span><br>
+                                                    <label>Producto</label>
+                                                    <span id="PROD">
+                                                    </span><br>
+                                                    <label>Cantidad</label>
+                                                    <br>
+                                                    <label>Precio de Compra</label>
+                                                    <br>
+                                                    <label>Precio de Venta</label>
+                                                    <br>
+                                                    <input id="btnSubDC" class="special" value="Guardar" type="submit" disabled>
+                                                </form>
+                                                            <a href="compra.php" class="button special">Datos Guardados. Regresar</a>
+                                                    <?php
+                                                            }
+
 
                                                     ?>
-                                                            <a href="compra.php" class="button special">Datos Guardados. Regresar</a>
+
                                                     <?php
                                                         }else{
                                                             //cargar formulario para añadir
@@ -187,8 +246,16 @@
                                                                 }
                                                                 ?>
 
-                                                        </datalist>
-
+                                                        	</datalist>
+														<br>
+														<label>Fecha: </label>
+														<input type="date" name="fecha" placeholder="aaaa-mm-dd" required> <br>
+														<label>Número de Factura</label>
+														<input type="text" name="txtNfac" required>
+														<label>Total Facturado</label>
+														<input type="number" name="saldo" id="saldo"  step="any" >
+														<br>
+                                                        <br>
                                                         <input type="hidden" name="btnAdd" value="Añadir">
                                                         <a href="compra.php" class="button special">Regresar</a>
                                                         <input class="special" value="Guardar" type="submit" >
