@@ -1,19 +1,42 @@
-function sugerencias(str){
+function CargarPresentacion(valor){
     var xmlhttp;
-    if (str.length==0) {
-        document.getElementById("txtHint").innerHTML="";
-        return;
-    }
-    if (window.XMLHttpRequest){
-        xmlhttp=new XMLHttpRequest();
-    }else{
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-            document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    document.getElementById("PP").innerHTML="";
+    document.getElementById("PROD").innerHTML="";
+    if (valor>0) {
+        document.getElementById("btnSubDC").disabled=false;
+        if (window.XMLHttpRequest){
+            xmlhttp=new XMLHttpRequest();
+        }else{
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                document.getElementById("PP").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","control/getripprod.php?id="+valor,true);
+        xmlhttp.send();
     }
-    xmlhttp.open("GET","sugerencias.php?q="+str,true);
-    xmlhttp.send();
+
+
+}
+function CargarProducto(valor){
+    document.getElementById("PROD").innerHTML="";
+    var TP=document.getElementById("slcTPDC").value;
+    var xmlhttp;
+    if (valor>0) {
+        document.getElementById("btnSubDC").disabled=false;
+        if (window.XMLHttpRequest){
+            xmlhttp=new XMLHttpRequest();
+        }else{
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                document.getElementById("PROD").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","control/getprod.php?idTP="+TP+"&idPP="+valor,true);
+        xmlhttp.send();
+    }
 }
