@@ -4,7 +4,7 @@
 
 ?>
                                                     <label class="custom-select">
-                                                        <select name="slcPPDC" id="slcPPDC" onchange="CargarProducto(this.value)" required>
+                                                        <select name="slcPPDC" id="slcPPDC" onchange="CargarProducto(this.value,0)" required>
                                                             <option disabled selected value="0">Seleccione un Valor</option>
                                                             <?php
                                                                 $sql = "SELECT presentacionProducto.id as id, presentacionProducto.descripcion as descripcion FROM Producto inner join presentacionProducto on presentacionProducto.id = Producto.presentacionProducto_id where Producto.tipoProd_id=".$_GET['id']." group by id order by descripcion asc;";
