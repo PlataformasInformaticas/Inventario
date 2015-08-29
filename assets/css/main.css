@@ -3251,6 +3251,7 @@
   /* removes the fucking native down arrow */
   -webkit-appearance: none;
   -moz-appearance: window;
+    font-size: large;
 }
 .custom-select select::-ms-expand {
   display: none;
