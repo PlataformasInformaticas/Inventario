@@ -132,32 +132,12 @@
                                                         }
                                                     }elseif(isset($_POST['btnDel'])){
                                                         //eliminar
-                                                        if(isset($_POST['chbDel'])){
-                                                            //guardar
-                                                            $sql="DELETE FROM  `presentacionProducto` WHERE `id`='".$_POST['btnDel']."';";
+														 $sql="DELETE FROM  `Compra` WHERE `id`='".$_POST['btnDel']."';";
                                                             $con -> query($sql);
                                                     ?>
                                                             <a href="compra.php" class="button special">Datos eliminados. Regresar</a>
                                                     <?php
-                                                        }else{
-                                                            //cargar formulario para eliminar
-                                                            $sql="SELECT descripcion FROM presentacionProducto where id='".$_POST['btnDel']."'";
-                                                            $resultado = $con -> query($sql);
-                                                            $obj = $resultado->fetch_object();
-                                                    ?>
-                                                        <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                            <p>
-                                                                Si elimina este tipo de producto; eliminara tambien todos los productos, ventas, compras y transacciones asociadas a este, generando problemas con sus datos.
-                                                            </p>
 
-                                                            <input type="checkbox" name="chbDel" value="true">Esta seguro que desea eliminar este tipo de producto. <strong><?php echo $obj->descripcion ; ?></strong><br>
-                                                            <input type="hidden" name="btnDel" value="<?php echo $_POST['btnDel'];?>">
-                                                            <a href="compra.php" class="button special">Regresar</a>
-                                                            <input class="special" value="Guardar" type="submit" >
-
-                                                        </form>
-                                                    <?php
-                                                        }
                                                         //añadir
                                                     }elseif(isset($_POST['btnAdd'])){
                                                         if(isset($_POST['lsProv'])){
@@ -202,8 +182,6 @@ if(isset($_POST['btnSubDC'])){
 	if(isset($_POST['editarDescCompraFinish'])){
         //Consulta para editar
         $sql="UPDATE `descCompra` SET `cantidad`='".$_POST['txtCant']."', `precio`='".$_POST['txtPC']."', `precioVenta`='".$_POST['txtPV'] ."', `Producto_id`='".$_POST['slcPDC']."' WHERE `id`='".$_POST['editarDescCompra']."';";
-
-        echo $sql;
         $con -> query($sql);
 
 ?>
@@ -310,6 +288,19 @@ if(isset($_POST['btnSubDC'])){
 <?php
 	}
 }elseif(isset($_POST['EliminarDescCompra'])){ //Eliminar
+	$sql="DELETE FROM  `descCompra` WHERE `id`='".$_POST['EliminarDescCompra']."';";
+	$con -> query($sql);
+?>
+	<h3>
+	Dato Eliminado Correctamente
+</h3>
+<form name="frmaddDescCompra" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+	<input type="hidden" name="btnAdd" value="Añadir">
+	<input type="hidden" name="lsProv" value="Producto">
+	<input type="hidden" name="txtId" value="<?php  echo $_POST['txtId'];?>">
+	<input name="showFRMdet" class="special" value="Regresar" type="submit" >
+</form>
+<?php
 }else{
 ?>
 <!--Formulario Descripcion de compra - Añadir -->
@@ -342,7 +333,7 @@ if(isset($_POST['btnSubDC'])){
 	<span id="PROD">
 	</span><br>
 	<label>Cantidad</label>
-	<input tipe="number" name="txtCant" placeholder="0.00" onchange="validarDouble(this);"  required >
+	<input tipe="number" name="txtCant" placeholder="0" onchange="validarDouble(this);"  required >
 	<br>
 	<span id="Precios">
 	</span>
@@ -437,7 +428,7 @@ if(isset($_POST['btnSubDC'])){
 		</td>
 
 		<td>
-			<form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+			<form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar este producto de la compra\nsi lo hace podría desbalancear su inventario.');">
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="lsProv" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCompra;?>">
@@ -524,11 +515,14 @@ if(isset($_POST['btnSubDC'])){
 
 														<td>
 															<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                                <Button name="btnEditar" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+																<input type="hidden" name="btnAdd" value="Añadir">
+																<input type="hidden" name="lsProv" value="Producto">
+																<input type="hidden" name="txtId" value="<?php  echo $obj->id;?>">
+                                                                <Button name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
                                                             </form>
                                                         </td>
 
-														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar este producto de la compra\nsi lo hace podría desbalancear su inventario.');">
                                                                 <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
