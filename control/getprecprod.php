@@ -1,10 +1,12 @@
 <?php
     include "../conect.php";
     include "../comprusr.php";
-	$sql = "SELECT Top 1 descCompra.precio as precio, Producto.precioVenta as precioVenta, Compra.fecha, Compra.id
-			FROM descCompra inner join Compra on descCompra.Compra_id = Compra.id where descCompra.Producto_id="
-			.$_GET['idP'].	" order by Compra.fecha desc, Compra.id ;";
-
+	$sql = "SELECT descCompra.precio AS precio, descCompra.precioVenta AS precioVenta, Compra.fecha, Compra.id
+FROM descCompra
+INNER JOIN Compra ON descCompra.Compra_id = Compra.id
+WHERE descCompra.Producto_id ="
+			.$_GET['idP'].	" ORDER BY Compra.fecha DESC , Compra.id DESC
+LIMIT 0 , 1";
 	$precio= "0.00";
 	$precioV= "0.00";
 	if($resultado = $con -> query($sql)){
