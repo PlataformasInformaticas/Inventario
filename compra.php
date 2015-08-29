@@ -137,7 +137,6 @@
                                                     ?>
                                                             <a href="compra.php" class="button special">Datos eliminados. Regresar</a>
                                                     <?php
-
                                                         //añadir
                                                     }elseif(isset($_POST['btnAdd'])){
                                                         if(isset($_POST['lsProv'])){
