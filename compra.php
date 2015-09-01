@@ -521,7 +521,7 @@ if(isset($_POST['btnSubDC'])){
                                                             </form>
                                                         </td>
 
-														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar este producto de la compra\nsi lo hace podría desbalancear su inventario.');">
+														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar esta compra\nsi lo hace podría desbalancear su inventario.');">
                                                                 <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
