@@ -22,7 +22,7 @@
                             <li class="submenu">
 								<a href="#">Compras</a>
 								<ul>
-									<li><a href="compra.php">Nueva Compra</a></li>
+									<li><a href="compra.php">Compras</a></li>
                                     <li><a href="prov.php">Proveedores</a></li>
 									<li class="submenu">
 										<a href="#">Reportes</a>
@@ -41,7 +41,7 @@
 									<li><a href="pp.php">Presentaciones</a></li>
 
 									<li><a href="prod.php">Productos</a></li>
-									<li><a href="#">Combos</a></li>
+									<li><a href="combo.php">Combos</a></li>
 									<li class="submenu">
 										<a href="#">Reportes</a>
 										<ul>
