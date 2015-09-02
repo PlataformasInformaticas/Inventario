@@ -1,6 +1,7 @@
 <?php
 require ('fpdf/fpdf.php');
-require ('../comprusr.php');
+//require ('../comprusr.php');
+include ('../config.php');
 include ('../conect.php');
 class PDF extends FPDF
 {
