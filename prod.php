@@ -245,7 +245,7 @@
                                                     <input name="btnAdd" class="special" value="Añadir Nuevo" type="submit" >
                                                 </form> <br>
                                                 <!--INSERT INTO `DBInventario`.`Producto` (`id`, `descripcion`, `cantidad`, `tipoProd_id`, `presentacionProducto_id`) VALUES (NULL, 'Coca Cola', '0', '1', '2');-->
-												<table border="1" style="width:auto">
+												<table class="rwd-table">
 													<tr>
 														<th>Id</th>
 														<th>Descripción</th>
