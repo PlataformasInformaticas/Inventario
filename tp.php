@@ -168,7 +168,7 @@
                                                 <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                     <input name="btnAdd" class="special" value="Añadir Nuevo" type="submit" >
                                                 </form> <br>
-												<table border="1" style="width:auto">
+												<table class="rwd-table">
 													<tr>
 														<th>id</th>
 														<th>Descripción</th>
