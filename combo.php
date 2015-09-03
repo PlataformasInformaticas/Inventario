@@ -93,40 +93,40 @@
                                                     //editar
 
 
-                                                    if(isset($_POST['btnEditar'])){
+                                                    if(isset($_POST['editarCombo'])){
                                                         if(isset($_POST['txtEditar'])){
                                                             //guardar
-                                                            $sql="UPDATE `presentacionProducto` SET `descripcion`='".$_POST['txtEditar']."' WHERE `id`='".$_POST['btnEditar']."';";
+                                                            $sql="UPDATE `Combo` SET `descripcion`='".$_POST['txtEditar']."',  precio=".$_POST['txtPrec']."  WHERE `id`='".$_POST['txtId']."';";
                                                             $con -> query($sql);
                                                     ?>
-                                                    <a href="combo.php" class="button special">Datos Guardados. Regresar</a>
+<h3>
+	Dato Modificado Correctamente
+</h3>
+<form name="frmaddDescCompra" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+	<input type="hidden" name="btnAdd" value="Añadir">
+	<input type="hidden" name="txtDesc" value="Producto">
+	<input type="hidden" name="txtId" value="<?php  echo $_POST['txtId'];?>">
+	<input name="showFRMdet" class="special" value="Regresar" type="submit" >
+</form>
                                                     <?php
                                                         }else{
                                                             //cargar formulario para modificar
 
-                                                        $sql="SELECT descripcion FROM presentacionProducto where id='".$_POST['btnEditar']."'";
+                                                        $sql="SELECT descripcion, precio FROM Combo where id='".$_POST['txtId']."'";
                                                         $resultado = $con -> query($sql);
                                                         $obj = $resultado->fetch_object();
                                                 ?>
                                                     <form name="frmEditar" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                         <label>Descripción: </label>
                                                         <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
-                                                        <label>Tipo de Producto: </label>
-
-
-                                                        <select name="tipoProd">
-                        <?php foreach ($rows as $row) {
-                            echo '<option value="'.$row['id'].'">'.$row['descripcion'].'</option>';
-                        }?>
-                    </select>
-
-
-                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
-                                                        <label>Presentacion de Producto: </label>
-                                                        <input name="txtEditar" type="text" value="<?php echo $obj->descripcion ; ?>"/>
-                                                        <input type="hidden" name="btnEditar" value="<?php echo $_POST['btnEditar'];?>">
+                                                        <label>Precio: </label>
+														<input type="number" name="txtPrec" id="txtPrec" value="<?php echo $obj->precio ; ?>" required placeholder="0.00" onchange="validarDouble(this);"   step="any" >
+														<input type="hidden" name="txtDesc" value="Producto">
+														<input type="hidden" name="txtId" value="<?php  echo $_POST['txtId']; ?>">
+														<br>
+														<br>
                                                         <a href="combo.php" class="button special">Regresar</a>
-                                                        <input class="special" value="Guardar" type="submit" >
+                                                        <input class="special" name="editarCombo" value="Guardar" type="submit" >
                                                     </form>
                                                 <?php
                                                         }
@@ -267,7 +267,7 @@ if(isset($_POST['btnSubDC'])){
 
 	</span><br>
 	<label>Cantidad</label>
-	<input tipe="number" name="txtCant" placeholder="0" onchange="validarInt(this);" value="<?php echo $obj2->cantidad; ?>"  required >
+	<input type="number" name="txtCant" placeholder="0" onchange="validarInt(this);" value="<?php echo $obj2->cantidad; ?>"  required >
 	<br>
 
 	<br>
@@ -322,7 +322,7 @@ if(isset($_POST['btnSubDC'])){
 	<span id="PROD">
 	</span><br>
 	<label>Cantidad</label>
-	<input tipe="number" name="txtCant" placeholder="0" onchange="validarDouble(this);"  required >
+	<input type="number" name="txtCant" placeholder="0" onchange="validarDouble(this);"  required >
 	<br>
 
 	<br>
@@ -335,11 +335,12 @@ if(isset($_POST['btnSubDC'])){
 <h3>
 	Descripción del Combo
 </h3>
-<table border="1" style="width:auto">
+<table class="rwd-table" >
 	<tr>
 		<th>Id</th>
 		<th>Descripción</th>
 		<th>Precio</th>
+		<th>Tareas</th>
 	</tr>
 	<?php
 	  //
@@ -352,6 +353,15 @@ if(isset($_POST['btnSubDC'])){
 		<td><?php echo $obj->id ; ?></td>
 		<td><?php echo $obj->descripcion ; ?></td>
 		<td><?php echo $obj->precio ; ?></td>
+		<td>
+			<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+				<input type="hidden" name="btnAdd" value="Añadir">
+				<input type="hidden" name="txtDesc" value="Producto">
+				<input type="hidden" name="txtId" value="<?php  echo $idCombo; ?>">
+				<Button name="editarCombo" type="submit" value="<?php echo $idCombo; ?>">  Editar</button>
+			</form>
+
+		</td>
 
 	</tr>
 	<?php
@@ -366,7 +376,7 @@ if(isset($_POST['btnSubDC'])){
 <h3>
 	Contenido del Combo
 </h3>
-<table border="1" style="width:auto">
+<table class="rwd-table" >
 	<tr>
 		<th>Id</th>
 		<th>Descripción</th>
@@ -438,7 +448,7 @@ if(isset($_POST['btnSubDC'])){
                                                 <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                     <input name="btnAdd" class="special" value="Añadir Nuevo" type="submit" >
                                                 </form> <br>
-												<table border="1" style="width:auto">
+												<table class="rwd-table" >
 													<tr>
 														<th>Id</th>
 														<th>Descripción</th>
