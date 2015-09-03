@@ -200,12 +200,12 @@
                                                         <td><?php echo $obj->direccion ; ?></td>
 														<td>
 															<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
-                                                                <Button name="btnEditar" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+                                                                <Button  class="small" class="small" name="btnEditar" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
                                                             </form>
                                                         </td>
 
 														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
-                                                                <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+                                                                <Button class="small" class="small" name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
   													</tr>
