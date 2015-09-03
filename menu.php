@@ -8,7 +8,7 @@
                             <li class="submenu">
 								<a href="#">Ventas</a>
 								<ul>
-									<li><a href="#">Nueva Venta</a></li>
+									<li><a href="venta.php">Venta</a></li>
 									<li class="submenu">
 										<a href="#">Reportes</a>
 										<ul>

@@ -113,12 +113,12 @@
 											</section>
 											<section>
 												<header>
-													<h4>Nueva Venta</h4>
+													<h4>Explorador de Ventas</h4>
 												</header>
 												<p><strong>Aquí puedes realizar ventas de producto a los clientes</strong></p>
 												<footer>
 													<ul class="buttons">
-														<li><a href="#" class="button small">Ir a Opción</a></li>
+														<li><a href="venta.php" class="button small">Ir a Opción</a></li>
 													</ul>
 												</footer>
 											</section>
