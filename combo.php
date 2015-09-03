@@ -358,7 +358,7 @@ if(isset($_POST['btnSubDC'])){
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="txtDesc" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCombo; ?>">
-				<Button name="editarCombo" type="submit" value="<?php echo $idCombo; ?>">  Editar</button>
+				<Button class="small" name="editarCombo" type="submit" value="<?php echo $idCombo; ?>">  Editar</button>
 			</form>
 
 		</td>
@@ -403,7 +403,7 @@ if(isset($_POST['btnSubDC'])){
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="txtDesc" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCombo; ?>">
-				<Button name="editarDescCombo" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+				<Button class="small" name="editarDescCombo" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
 			</form>
 		</td>
 
@@ -412,7 +412,7 @@ if(isset($_POST['btnSubDC'])){
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="txtDesc" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCombo;?>">
-				<Button name="EliminarDescCombo" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+				<Button class="small" name="EliminarDescCombo" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
 			</form>
 		</td>
 	</tr>
@@ -471,12 +471,12 @@ if(isset($_POST['btnSubDC'])){
 																<input type="hidden" name="btnAdd" value="Añadir">
 																<input type="hidden" name="txtDesc" value="Producto">
 																<input type="hidden" name="txtId" value="<?php  echo $obj->id;?>">
-                                                                <Button name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+                                                                <Button class="small" name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
                                                             </form>
                                                         </td>
 
 														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar este combo\nsi lo hace podría desbalancear su inventario.');">
-                                                                <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+                                                                <Button class="small" name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
   													</tr>
