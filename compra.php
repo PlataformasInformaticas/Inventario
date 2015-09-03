@@ -269,15 +269,15 @@ if(isset($_POST['btnSubDC'])){
 
 	</span><br>
 	<label>Cantidad</label>
-	<input tipe="number" name="txtCant" placeholder="0" onchange="validarInt(this);" value="<?php echo $obj2->cantidad; ?>"  required >
+	<input type="number" name="txtCant" placeholder="0" onchange="validarInt(this);" value="<?php echo $obj2->cantidad; ?>"  required >
 	<br>
 	<span id="Precios">
                                                     <label>Precio Unitario de Compra: </label>
-													<input tipe="number" name="txtPC" required value="<?php echo $obj2->precio; ?>"
+													<input type="number" name="txtPC" required value="<?php echo $obj2->precio; ?>"
 														   onchange="validarDouble(this);" >
                                                     <br>
                                                     <label>Precio Unitario de Venta: </label>
-													<input tipe="number" name="txtPV" required value="<?php echo $obj2->precioVenta; ?>"
+													<input type="number" name="txtPV" required value="<?php echo $obj2->precioVenta; ?>"
 														   onchange="validarDouble(this);" >
 	</span>
 	<br>
@@ -332,7 +332,7 @@ if(isset($_POST['btnSubDC'])){
 	<span id="PROD">
 	</span><br>
 	<label>Cantidad</label>
-	<input tipe="number" name="txtCant" placeholder="0" onchange="validarDouble(this);"  required >
+	<input type="number" name="txtCant" placeholder="0" onchange="validarDouble(this);"  required >
 	<br>
 	<span id="Precios">
 	</span>
@@ -346,7 +346,7 @@ if(isset($_POST['btnSubDC'])){
 <h3>
 	Descripción de Factura
 </h3>
-<table border="1" style="width:auto">
+<table class="rwd-table">
 	<tr>
 		<th>Id</th>
 		<th>Número de Factura</th>
@@ -387,7 +387,7 @@ if(isset($_POST['btnSubDC'])){
 <h3>
 	Detalle de Factura
 </h3>
-<table border="1" style="width:auto">
+<table class="rwd-table">
 	<tr>
 		<th>Id</th>
 		<th>Descripción</th>
@@ -486,7 +486,7 @@ if(isset($_POST['btnSubDC'])){
                                                 <form name="frmAdd" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
                                                     <input name="btnAdd" class="special" value="Añadir Nuevo" type="submit" >
                                                 </form> <br>
-												<table border="1" style="width:auto">
+												<table class="rwd-table">
 													<tr>
 														<th>Id</th>
 														<th>Número de Factura</th>
@@ -517,12 +517,12 @@ if(isset($_POST['btnSubDC'])){
 																<input type="hidden" name="btnAdd" value="Añadir">
 																<input type="hidden" name="lsProv" value="Producto">
 																<input type="hidden" name="txtId" value="<?php  echo $obj->id;?>">
-                                                                <Button name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+                                                                <Button class="small" name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
                                                             </form>
                                                         </td>
 
 														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar esta compra\nsi lo hace podría desbalancear su inventario.');">
-                                                                <Button name="btnDel" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+                                                                <Button name="btnDel" class="small" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
   													</tr>
