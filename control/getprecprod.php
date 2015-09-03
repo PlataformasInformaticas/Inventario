@@ -19,9 +19,9 @@ LIMIT 0 , 1";
 
 ?>
                                                     <label>Precio Unitario de Compra: </label>
-													<input tipe="number" name="txtPC" required value="<?php echo $precio ?>"
+													<input type="number" name="txtPC" required value="<?php echo $precio ?>"
 														   onchange="validarDouble(this);" >
                                                     <br>
                                                     <label>Precio Unitario de Venta: </label>
-													<input tipe="number" name="txtPV" required value="<?php echo $precioV ?>"
+													<input type="number" name="txtPV" required value="<?php echo $precioV ?>"
 														   onchange="validarDouble(this);" >
