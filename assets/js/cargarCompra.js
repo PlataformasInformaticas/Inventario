@@ -84,3 +84,10 @@ function validarDouble(numero){
 		alert("Número Invalido\ndebe usar el formato ####.## ó ###");
 	}
 }
+function validarInt(numero){
+	var m = numero.value.match(/^((\d+))$/);
+	if(m===null){
+		numero.value="";
+		alert("Número Invalido\ndebe usar el formato ###");
+	}
+}
