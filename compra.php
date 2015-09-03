@@ -422,7 +422,7 @@ if(isset($_POST['btnSubDC'])){
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="lsProv" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCompra; ?>">
-				<Button name="editarDescCompra" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+				<Button class="small" name="editarDescCompra" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
 			</form>
 		</td>
 
@@ -431,7 +431,7 @@ if(isset($_POST['btnSubDC'])){
 				<input type="hidden" name="btnAdd" value="Añadir">
 				<input type="hidden" name="lsProv" value="Producto">
 				<input type="hidden" name="txtId" value="<?php  echo $idCompra;?>">
-				<Button name="EliminarDescCompra" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+				<Button class="small" name="EliminarDescCompra" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
 			</form>
 		</td>
 	</tr>
@@ -517,12 +517,12 @@ if(isset($_POST['btnSubDC'])){
 																<input type="hidden" name="btnAdd" value="Añadir">
 																<input type="hidden" name="lsProv" value="Producto">
 																<input type="hidden" name="txtId" value="<?php  echo $obj->id;?>">
-                                                                <Button class="small" name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
+                                                                <Button class="small" class="small" name="showFRMdet" type="submit" value="<?php echo $obj->id; ?>">  Editar</button>
                                                             </form>
                                                         </td>
 
 														<td><form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" onsubmit="return confirm('Desea Eliminar esta compra\nsi lo hace podría desbalancear su inventario.');">
-                                                                <Button name="btnDel" class="small" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
+                                                                <Button class="small" name="btnDel" class="small" type="submit" value="<?php echo $obj->id; ?>" >Eliminar</button>
                                                             </form>
                                                         </td>
   													</tr>
